@@ -60,7 +60,7 @@ impl RoutingInfo {
     }
 }
 
-pub(crate) trait Routable {
+pub trait Routable {
     // Convenience function to return ascii uppercase version of the
     // the first argument (i.e., the command).
     fn command(&self) -> Option<Vec<u8>> {

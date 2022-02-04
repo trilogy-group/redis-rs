@@ -386,7 +386,7 @@ impl ClusterConnection {
     }
 
     #[allow(clippy::unnecessary_unwrap)]
-    fn request<R, T, F>(&self, cmd: &R, mut func: F) -> RedisResult<T>
+    pub fn request<R, T, F>(&self, cmd: &R, mut func: F) -> RedisResult<T>
     where
         R: ?Sized + Routable,
         T: MergeResults + std::fmt::Debug,
@@ -597,7 +597,7 @@ impl ClusterConnection {
     }
 }
 
-trait MergeResults {
+pub trait MergeResults {
     fn merge_results(_values: HashMap<&str, Self>) -> Self
     where
         Self: Sized;
